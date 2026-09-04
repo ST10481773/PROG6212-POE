@@ -16,7 +16,7 @@ CREATE TABLE Users (
     last_name VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(2048) NULL,
     created_at DATETIME NOT NULL CONSTRAINT DF_Users_CreatedAt DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FK_Users_Roles FOREIGN KEY (role_id) REFERENCES Roles(id)
+    CONSTRAINT FK_Users_Roles FOREIGN KEY (role_id) REFERENCES Roles(id) 
 );
 
 CREATE TABLE EventTypes (
@@ -35,6 +35,6 @@ CREATE TABLE Events (
     banner_image_url VARCHAR(2048) NULL,
     organiser_id INT NOT NULL,
     created_at DATETIME NOT NULL CONSTRAINT DF_Events_CreatedAt DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FK_Events_EventTypes FOREIGN KEY (event_type_id) REFERENCES EventTypes(id) ON DELETE NO ACTION,
-    CONSTRAINT FK_Events_Users FOREIGN KEY (organiser_id) REFERENCES Users(id) ON DELETE NO ACTION
+    CONSTRAINT FK_Events_EventTypes FOREIGN KEY (event_type_id) REFERENCES EventTypes(id) ,
+    CONSTRAINT FK_Events_Users FOREIGN KEY (organiser_id) REFERENCES Users(id) 
 );
