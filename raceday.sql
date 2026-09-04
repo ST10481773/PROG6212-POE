@@ -16,7 +16,7 @@ CREATE TABLE Users (
     last_name VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(2048) NULL,
     created_at DATETIME NOT NULL CONSTRAINT DF_Users_CreatedAt DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FK_Users_Roles FOREIGN KEY (role_id) REFERENCES Roles(id) ON DELETE NO ACTION
+    CONSTRAINT FK_Users_Roles FOREIGN KEY (role_id) REFERENCES Roles(id)
 );
 
 CREATE TABLE EventTypes (
