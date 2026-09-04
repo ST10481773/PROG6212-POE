@@ -59,3 +59,12 @@ CREATE TABLE Enrolments (
     CONSTRAINT FK_Enrolments_Categories FOREIGN KEY (category_id) REFERENCES Categories(id) ,
     CONSTRAINT UQ_Enrolment_Participant_Event UNIQUE (participant_id, event_id)
 );
+
+CREATE TABLE Results (
+    id INT IDENTITY(1,1) CONSTRAINT PK_Results PRIMARY KEY,
+    enrolment_id INT NOT NULL CONSTRAINT UQ_Results_Enrolment UNIQUE,
+    finish_time TIME NOT NULL,
+    finishing_position INT NOT NULL,
+    captured_at DATETIME NOT NULL CONSTRAINT DF_Results_CapturedAt DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_Results_Enrolments FOREIGN KEY (enrolment_id) REFERENCES Enrolments(id) 
+);
