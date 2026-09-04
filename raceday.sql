@@ -38,3 +38,16 @@ CREATE TABLE Events (
     CONSTRAINT FK_Events_EventTypes FOREIGN KEY (event_type_id) REFERENCES EventTypes(id) ,
     CONSTRAINT FK_Events_Users FOREIGN KEY (organiser_id) REFERENCES Users(id) 
 );
+
+CREATE TABLE Enrolments (
+    id INT IDENTITY(1,1) CONSTRAINT PK_Enrolments PRIMARY KEY,
+    participant_id INT NOT NULL,
+    event_id INT NOT NULL,
+    category_id INT NOT NULL,
+    enrolment_date DATETIME NOT NULL CONSTRAINT DF_Enrolments_Date DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) NOT NULL CONSTRAINT DF_Enrolments_Status DEFAULT 'Pending',
+    CONSTRAINT FK_Enrolments_Users FOREIGN KEY (participant_id) REFERENCES Users(id) ,
+    CONSTRAINT FK_Enrolments_Events FOREIGN KEY (event_id) REFERENCES Events(id) ,
+    CONSTRAINT FK_Enrolments_Categories FOREIGN KEY (category_id) REFERENCES Categories(id) ,
+    CONSTRAINT UQ_Enrolment_Participant_Event UNIQUE (participant_id, event_id)
+);
