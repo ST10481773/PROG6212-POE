@@ -1,2 +1,7 @@
 CREATE DATABASE raceday
 USE [raceday]
+
+CREATE TABLE Roles (
+    id INT IDENTITY(1,1) CONSTRAINT PK_Roles PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL CONSTRAINT UQ_Roles_Name UNIQUE
+);
