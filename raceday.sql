@@ -68,3 +68,19 @@ CREATE TABLE Results (
     captured_at DATETIME NOT NULL CONSTRAINT DF_Results_CapturedAt DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FK_Results_Enrolments FOREIGN KEY (enrolment_id) REFERENCES Enrolments(id) 
 );
+
+INSERT INTO Roles (role_name) VALUES ('Organiser'), ('Participant');
+INSERT INTO EventTypes (type_name) VALUES ('Run'), ('Walk'), ('Cycle');
+
+INSERT INTO Users (username, email, password_hash, role_id, first_name, last_name, profile_picture_url)
+VALUES 
+('sipho_events', 'sipho.dube@raceday.co.za', 'AQAAAAIAAYagAAAAEJx...', 1, 'Sipho', 'Dube', 'https://racedaystorage.blob.core.windows.net/profiles/sipho.jpg'),
+('sarah_runs', 'sarah.smith@raceday.co.za', 'AQAAAAIAAYagAAAAENm...', 1, 'Sarah', 'Smith', 'https://racedaystorage.blob.core.windows.net/profiles/sarah.jpg');
+
+INSERT INTO Users (username, email, password_hash, role_id, first_name, last_name, profile_picture_url)
+VALUES 
+('piet_runner', 'piet.marais@gmail.com', 'AQAAAAIAAYagAAAAEPh...', 2, 'Piet', 'Marais', 'https://racedaystorage.blob.core.windows.net/profiles/piet.jpg'),
+('lerato_cycles', 'lerato.mofokeng@yahoo.com', 'AQAAAAIAAYagAAAAERk...', 2, 'Lerato', 'Mofokeng', 'https://racedaystorage.blob.core.windows.net/profiles/lerato.jpg'),
+('jabu_walks', 'jabu.nkosi@webmail.co.za', 'AQAAAAIAAYagAAAAETy...', 2, 'Jabu', 'Nkosi', NULL),
+('charlotte_v', 'charlotte.vanwyk@outlook.com', 'AQAAAAIAAYagAAAAEYu...', 2, 'Charlotte', 'Van Wyk', NULL);
+
