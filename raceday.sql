@@ -39,6 +39,14 @@ CREATE TABLE Events (
     CONSTRAINT FK_Events_Users FOREIGN KEY (organiser_id) REFERENCES Users(id) 
 );
 
+CREATE TABLE Categories (
+    id INT IDENTITY(1,1) CONSTRAINT PK_Categories PRIMARY KEY,
+    event_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NULL,
+    CONSTRAINT FK_Categories_Events FOREIGN KEY (event_id) REFERENCES Events(id) 
+);
+
 CREATE TABLE Enrolments (
     id INT IDENTITY(1,1) CONSTRAINT PK_Enrolments PRIMARY KEY,
     participant_id INT NOT NULL,
