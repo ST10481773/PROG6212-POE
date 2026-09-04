@@ -84,3 +84,60 @@ VALUES
 ('jabu_walks', 'jabu.nkosi@webmail.co.za', 'AQAAAAIAAYagAAAAETy...', 2, 'Jabu', 'Nkosi', NULL),
 ('charlotte_v', 'charlotte.vanwyk@outlook.com', 'AQAAAAIAAYagAAAAEYu...', 2, 'Charlotte', 'Van Wyk', NULL);
 
+
+INSERT INTO Events (name, description, date, location, distance, event_type_id, banner_image_url, organiser_id)
+VALUES 
+('Soweto Half Marathon', 'A road running event through the historical streets of Soweto, celebrating community spirit.', '2026-11-01 06:00:00', 'Soweto, Johannesburg', 21.10, 1, 'https://racedaystorage.blob.core.windows.net/banners/soweto-half.jpg', 1);
+
+INSERT INTO Events (name, description, date, location, distance, event_type_id, banner_image_url, organiser_id)
+VALUES 
+('West Coast Cycling Classic', 'A scenic road cycling race starting in Melkbosstrand and heading along the West Coast road.', '2026-10-18 07:00:00', 'Melkbosstrand, Cape Town', 109.00, 3, 'https://racedaystorage.blob.core.windows.net/banners/west-coast-classic.jpg', 2);
+
+INSERT INTO Events (name, description, date, location, distance, event_type_id, banner_image_url, organiser_id)
+VALUES 
+('Durban Beachfront Charity Walk', 'A family walk along the Durban Golden Mile beachfront promenade to raise funds for local animal shelters.', '2026-09-27 08:30:00', 'Durban Beachfront', 5.00, 2, 'https://racedaystorage.blob.core.windows.net/banners/durban-beachfront-walk.jpg', 1);
+
+INSERT INTO Categories (event_id, name, description)
+VALUES 
+(1, 'Open Male', 'Male runners of any age group'),
+(1, 'Open Female', 'Female runners of any age group'),
+(1, 'Veterans 40+', 'Runners aged 40 years and older');
+
+INSERT INTO Categories (event_id, name, description)
+VALUES 
+(2, 'Elite Men', 'Professional and licensed elite male cyclists'),
+(2, 'Elite Women', 'Professional and licensed elite female cyclists'),
+(2, 'Sub-Veterans 30-39', 'Cyclists aged 30 to 39 years');
+
+INSERT INTO Categories (event_id, name, description)
+VALUES 
+(3, 'Adult Walkers', 'Participants aged 13 and older'),
+(3, 'Kids & Seniors', 'Participants under 12 or over 65');
+
+-- Soweto Half Marathon Enrolments
+INSERT INTO Enrolments (participant_id, event_id, category_id, enrolment_date, status)
+VALUES 
+(3, 1, 1, '2026-09-01 10:14:22', 'Confirmed'), -- Piet
+(6, 1, 2, '2026-09-02 14:45:10', 'Confirmed'); -- Charlotte
+
+-- West Coast Cycling Classic Enrolment
+INSERT INTO Enrolments (participant_id, event_id, category_id, enrolment_date, status)
+VALUES 
+(4, 2, 5, '2026-09-03 09:30:00', 'Confirmed'); -- Lerato
+
+-- Durban Beachfront Charity Walk Enrolment
+INSERT INTO Enrolments (participant_id, event_id, category_id, enrolment_date, status)
+VALUES 
+(5, 3, 7, '2026-09-04 11:20:00', 'Pending'); -- Jabu
+
+-- Soweto Half Marathon Results
+INSERT INTO Results (enrolment_id, finish_time, finishing_position)
+VALUES 
+(1, '01:24:45', 12), -- Piet
+(2, '01:42:15', 38); -- Charlotte
+
+-- West Coast Cycling Classic Results
+INSERT INTO Results (enrolment_id, finish_time, finishing_position)
+VALUES 
+(3, '02:58:30', 3); -- Lerato
+
